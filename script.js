@@ -519,9 +519,10 @@ function renderAgentStatus(status) {
 }
 
 function updateClock() {
+    const clockEl = document.getElementById('system-clock');
+    if (!clockEl) return; // 要素がなければ何もしない（エラー防止）
+
     const now = new Date();
-    
-    // 年、月、日、時、分、秒を取得して2桁に揃える
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
@@ -529,15 +530,10 @@ function updateClock() {
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
 
-    const clockEl = document.getElementById('system-clock');
-    if (clockEl) {
-        // TOAシステムらしいフォーマット
-        clockEl.innerText = `SYS_TIME: ${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
-    }
+    clockEl.innerText = `SYS_TIME: ${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
 }
 
-// 1秒（1000ミリ秒）ごとに実行
+// 1秒ごとに実行
 setInterval(updateClock, 1000);
-
-// 初回起動時にも実行しておく
-updateClock();
+// 念のため少し遅らせて初回実行（ログイン画面描画の安定化）
+setTimeout(updateClock, 100);
