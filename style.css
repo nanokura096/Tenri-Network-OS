@@ -1,410 +1,156 @@
-:root{
-  --bg:#000;
-  --panel:#050505;
-  --green:#00ff41;
-  --green2:#00cc33;
-  --red:#ff2a2a;
+/* ==========================================================
+   TENRI NETWORK OS - MOBILE OPTIMIZED STYLE
+   ========================================================== */
+
+:root {
+  --bg: #000;
+  --panel: #050505;
+  --green: #00ff41;
+  --red: #ff2a2a;
+  --gray: #888888;
 }
 
-*{
-  box-sizing:border-box;
-  font-family:'Courier New', monospace;
+* {
+  box-sizing: border-box;
+  font-family: 'Courier New', monospace;
+  /* スマホの長押しメニューや選択青枠を防止してアプリ感を出す */
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
-body{
-  margin:0;
-  padding:0;
-  background:var(--bg);
-  color:var(--green);
-  overflow:hidden;
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--green);
+  overflow: hidden;
+  /* スマホのアドレスバーで画面が跳ねるのを防ぐ */
+  height: 100dvh; 
 }
 
-/* =========================
-   ALL BUTTON BASE
-========================= */
-button{
-  background:#020202;
-  border:1px solid var(--green);
-  color:var(--green);
-  padding:12px 8px;
-  font-size:0.85em;
-  cursor:pointer;
-  transition:.2s;
-  font-family:'Courier New', monospace;
-  outline:none;
-  appearance:none;
-  -webkit-appearance:none;
+/* --- ボタン設定：スマホで押しやすく --- */
+button {
+  background: #020202;
+  border: 1px solid var(--green);
+  color: var(--green);
+  padding: 15px 10px; /* 高さを出して押しやすく */
+  font-size: 0.9em;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
 }
 
-/* =========================
-   FULL SCREEN
-========================= */
-.full-screen{
-  position:fixed;
-  inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#000;
-  z-index:9999;
+button:active {
+  background: var(--green);
+  color: #000;
 }
 
-/* =========================
-   TERMINAL BOX
-========================= */
-.terminal-box{
-  width:min(500px,90vw);
-  min-height:200px;
-  border:1px solid var(--green);
-  background:var(--panel);
-  padding:25px;
-  box-shadow:0 0 20px rgba(0,255,65,.15);
+/* --- 全画面レイアウト --- */
+.full-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  z-index: 9999;
+  padding: 20px;
 }
 
-.terminal-box.danger{
-  border:1px solid var(--red);
-  box-shadow:0 0 25px rgba(255,0,0,.25);
+.terminal-box {
+  width: 100%;
+  max-width: 450px;
+  border: 1px solid var(--green);
+  background: var(--panel);
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
 }
 
-/* =========================
-   LOGIN INPUT
-========================= */
-.terminal-input{
-  width:100%;
-  margin-top:12px;
-  background:#000;
-  border:none;
-  border-left:3px solid var(--green);
-  color:var(--green);
-  padding:10px;
-  outline:none;
-  font-size:1em;
-  appearance:none;
-  -webkit-appearance:none;
+/* --- メイン端末画面 --- */
+#mainTerminal {
+  display: none;
+  flex-direction: column;
+  height: 100dvh;
+  padding: 10px;
 }
 
-/* =========================
-   MAIN TERMINAL
-========================= */
-#mainTerminal{
-  display:none;
-  flex-direction:column;
-  height:100vh;
-  padding:10px;
+#logo {
+  border-bottom: 1px solid var(--green);
+  padding: 5px 10px;
+  font-size: 0.8em;
+  letter-spacing: 1px;
 }
 
-#logo{
-  border-bottom:1px solid var(--green);
-  padding:10px;
-  font-size:0.95em;
-  text-shadow:0 0 5px rgba(0,255,65,.4);
+#statusbar {
+  display: flex !important;
+  justify-content: space-between;
+  padding: 5px 15px;
+  font-size: 0.75em;
+  opacity: 0.9;
+  background: rgba(0, 255, 65, 0.05);
 }
 
-#statusbar{
-  padding:6px 10px;
-  font-size:0.8em;
-  opacity:.7;
+/* ボタンのグリッド配置（スマホで2列） */
+.main-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 10px 0;
 }
 
-/* =========================
-   MAIN BUTTONS
-========================= */
-.main-buttons{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:8px;
-  margin:8px 0;
+#output {
+  flex: 1;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  padding: 15px;
+  overflow-y: auto;
+  font-size: 0.95em;
+  line-height: 1.4;
+  background: rgba(0, 5, 0, 0.5);
 }
 
-.main-buttons button:active,
-.quick-buttons button:active,
-.logout-zone button:active,
-.authButtons button:active,
-.data-btn:active{
-  background:var(--green);
-  color:#000;
-  box-shadow:0 0 10px rgba(0,255,65,.5);
+/* 検索結果のボタン */
+.data-btn {
+  width: 100%;
+  margin-top: 8px;
+  text-align: left;
+  border-style: dashed;
 }
 
-/* =========================
-   POPUP BUTTONS
-========================= */
-.quick-buttons{
-  display:flex;
-  gap:8px;
-  margin-top:12px;
+/* ログアウトエリア */
+.logout-zone {
+  margin-top: 10px;
+}
+.logout-zone button {
+  width: 100%;
+  border-color: var(--red);
+  color: var(--red);
 }
 
-.quick-buttons button{
-  flex:1;
+/* --- ステータス別カラー --- */
+.status-active { color: var(--green); }
+.status-kia { 
+  color: var(--red); 
+  font-weight: bold; 
+  text-shadow: 0 0 5px var(--red);
 }
+.status-mia { color: var(--gray); }
 
-/* =========================
-   OUTPUT WINDOW
-========================= */
-#output{
-  flex:1;
-  margin-top:8px;
-  border:1px solid rgba(0,255,65,.4);
-  background:rgba(0,255,65,.03);
-  padding:12px;
-  overflow-y:auto;
-  font-size:0.85em;
-  line-height:1.5;
-  box-shadow:inset 0 0 12px rgba(0,255,65,.08);
-}
-
-#output::-webkit-scrollbar{
-  width:4px;
-}
-
-#output::-webkit-scrollbar-thumb{
-  background:var(--green);
-}
-
-/* =========================
-   DATA BUTTONS
-========================= */
-.data-btn{
-  width:100%;
-  margin-top:8px;
-  text-align:left;
-}
-
-/* =========================
-   LOGOUT
-========================= */
-.logout-zone{
-  margin-top:8px;
-}
-
-.logout-zone button{
-  width:100%;
-  border-color:var(--red);
-  color:var(--red);
-  background:#020202;
-}
-
-.logout-zone button:active{
-  background:var(--red);
-  color:#000;
-}
-
-/* =========================
-   SECRET AUTH
-========================= */
-#secretError,
-#authError{
-  color:var(--red);
-  margin-top:10px;
-  font-size:.9em;
-}
-
-.authButtons{
-  display:flex;
-  gap:8px;
-  margin-top:12px;
-}
-
-.authButtons button{
-  flex:1;
-}
-
-.danger-btn{
-  border-color:var(--red)!important;
-  color:var(--red)!important;
-  background:#020202!important;
-}
-
-.danger-btn:active{
-  background:var(--red)!important;
-  color:#000!important;
-}
-
-/* =========================
-   BLINK
-========================= */
-.blink{
-  animation:blink 1s infinite;
-}
-
-@keyframes blink{
-  50%{opacity:0;}
-}
-
-/* =========================
-   STATUS COLORS
-========================= */
-.status-active{
-  color:#00ff41;
-  text-shadow:0 0 6px rgba(0,255,65,.5);
-}
-
-.status-contained{
-  color:#00e1ff;
-  text-shadow:0 0 6px rgba(0,225,255,.5);
-}
-
-.status-missing{
-  color:#ffe600;
-  text-shadow:0 0 6px rgba(255,230,0,.5);
-}
-
-.status-terminated{
-  color:#ff2a2a;
-  text-shadow:0 0 6px rgba(255,42,42,.5);
-}
-
-.status-neutralized{
-  color:#9a9a9a;
-  text-shadow:0 0 6px rgba(180,180,180,.3);
-}
-
-.status-sealed{
-  color:#b266ff;
-  text-shadow:0 0 6px rgba(178,102,255,.5);
-}
-
-.status-suspended{
-  color:#ff9900;
-  text-shadow:0 0 6px rgba(255,153,0,.5);
-}
-
-/* =========================
-   DANGER COLORS
-========================= */
-.danger-low{
-  color:#00ff41;
-  text-shadow:0 0 6px rgba(0,255,65,.5);
-}
-
-.danger-medium{
-  color:#ffe600;
-  text-shadow:0 0 6px rgba(255,230,0,.5);
-}
-
-.danger-high{
-  color:#ff2a2a;
-  text-shadow:0 0 6px rgba(255,42,42,.5);
-}
-
-.danger-extreme{
-  color:#ff00ae;
-  text-shadow:0 0 6px rgba(255,0,174,.5);
-}
-
-/* =========================
-   INFO PANEL
-========================= */
-.info-panel{
-  border:1px solid rgba(0,255,65,.5);
-  background:rgba(0,255,65,.03);
-  padding:12px;
-  margin-top:8px;
-  box-shadow:inset 0 0 10px rgba(0,255,65,.06);
-}
-
-.info-line{
-  padding:4px 0;
-  border-bottom:1px solid rgba(0,255,65,.08);
-}
-
-.info-title{
-  color:rgba(0,255,65,.65);
-  display:inline-block;
-  width:85px;
-}
-
-.secret-detected{
-  margin-top:10px;
-  color:#ff2a2a;
-  text-shadow:0 0 6px rgba(255,42,42,.5);
-  animation:blink 1s infinite;
-}
-
-/* 記憶処理時のフラッシュ演出用 */
-.amnestic-flash {
-  background-color: white !important;
-  color: white !important;
-  transition: all 0.3s ease;
-}
-
-/* SECRET情報の特別なスタイル */
-.secret-record-text {
-  color: #ff4444; /* 警告の赤 */
-  border-left: 2px solid #ff4444;
-  padding-left: 10px;
-  background: rgba(255, 0, 0, 0.1);
-  font-style: italic;
-  animation: secret-flicker 2s infinite;
-}
-
-@keyframes secret-flicker {
-  0% { opacity: 1; }
-  95% { opacity: 1; }
-  96% { opacity: 0.5; }
-  97% { opacity: 1; }
-  98% { opacity: 0.8; }
-  100% { opacity: 1; }
-}
-
-/* KIA (死亡) のテキストを不穏に光らせる */
-.status-kia {
-    color: #ff4444;
-    text-shadow: 0 0 5px #ff0000;
-    animation: pulse-red 2.0s infinite;
-}
-
-@keyframes pulse-red {
-    0% { opacity: 1; }
-    50% { opacity: 0.6; }
-    100% { opacity: 1; }
-}
-
+/* --- 演出用アニメーション --- */
 .blink {
-    animation: status-blink 1.5s infinite alternate;
+  animation: terminal-blink 1.5s infinite;
+}
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
-@keyframes status-blink {
-    from { opacity: 1; text-shadow: 0 0 5px #ff4444; }
-    to { opacity: 0.3; text-shadow: none; }
-}
-
-/* 現役：安定したグリーン */
-.status-active {
-  color: #00ff00;
-  text-shadow: 0 0 5px #00ff00;
-}
-
-/* 殉職：警告の赤 + 点滅 */
-.status-kia {
-  color: #ff4444;
-  font-weight: bold;
-  animation: alert-flash 1s infinite alternate;
-}
-
-/* 行方不明：薄暗いグレー + 砂嵐のような不透明度変化 */
-.status-mia {
-  color: #888888;
-  text-shadow: none;
-  animation: ghost-flicker 3s infinite;
-}
-
-/* 演出用アニメーション */
-@keyframes alert-flash {
-  from { opacity: 1; text-shadow: 0 0 10px #ff0000; }
-  to { opacity: 0.4; text-shadow: none; }
-}
-
-@keyframes ghost-flicker {
-  0%, 100% { opacity: 0.8; }
-  5% { opacity: 0.2; }
-  7% { opacity: 0.9; }
-  9% { opacity: 0.3; }
-  10% { opacity: 0.8; }
-}
-
-#system-clock {
-    margin-left: auto; /* これで強制的に右に押し出します */
-    font-family: monospace;
+.terminal-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--green);
+  color: var(--green);
+  font-size: 1.2em;
+  padding: 5px;
+  outline: none;
 }

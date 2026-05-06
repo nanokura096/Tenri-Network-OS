@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Tenri Network OS</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -18,12 +18,13 @@
     </div>
   </div>
 
-  <div id="mainTerminal" style="display:none; flex-direction:column; padding:20px;">
+  <div id="mainTerminal" style="display:none; flex-direction:column;">
     <div id="logo">TENRI NETWORK OS // TOA-226</div>
+    
     <div id="statusbar" style="display: flex !important; justify-content: space-between; width: 100%; box-sizing: border-box; padding: 0 15px;">
-  <span>SYSTEM ONLINE</span>
-  <span id="system-clock"></span>
-</div>
+      <span>SYSTEM ONLINE</span>
+      <span id="system-clock"></span>
+    </div>
     
     <div class="main-buttons">
       <button onclick="playSound('click'); helpCommand()">HELP</button>
@@ -43,7 +44,7 @@
     <div class="terminal-box">
       <div class="blink" style="color:var(--red);margin-bottom:15px;">[ SECURITY AUTHORIZATION REQUIRED ]</div>
       <div style="margin-bottom:10px;">Enter Clearance Password</div>
-      <input type="password" id="secretPassInput" class="terminal-input">
+      <input type="password" id="secretPassInput" class="terminal-input" placeholder="PASSWORD">
       <div class="quick-buttons">
         <button onclick="confirmSecretAccess()">DECRYPT</button>
         <button onclick="closeSecretAuth()">ABORT</button>
@@ -63,6 +64,7 @@
     </div>
   </div>
 
+  <script src="database.js"></script>
   <script src="script.js" defer></script>
 </body>
 </html>
