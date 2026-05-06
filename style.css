@@ -1,0 +1,330 @@
+:root{
+  --bg:#000;
+  --panel:#050505;
+  --green:#00ff41;
+  --green2:#00cc33;
+  --red:#ff2a2a;
+}
+
+*{
+  box-sizing:border-box;
+  font-family:'Courier New', monospace;
+}
+
+body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--green);
+  overflow:hidden;
+}
+
+/* =========================
+   ALL BUTTON BASE
+========================= */
+button{
+  background:#020202;
+  border:1px solid var(--green);
+  color:var(--green);
+  padding:12px 8px;
+  font-size:0.85em;
+  cursor:pointer;
+  transition:.2s;
+  font-family:'Courier New', monospace;
+  outline:none;
+  appearance:none;
+  -webkit-appearance:none;
+}
+
+/* =========================
+   FULL SCREEN
+========================= */
+.full-screen{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#000;
+  z-index:9999;
+}
+
+/* =========================
+   TERMINAL BOX
+========================= */
+.terminal-box{
+  width:min(500px,90vw);
+  min-height:200px;
+  border:1px solid var(--green);
+  background:var(--panel);
+  padding:25px;
+  box-shadow:0 0 20px rgba(0,255,65,.15);
+}
+
+.terminal-box.danger{
+  border:1px solid var(--red);
+  box-shadow:0 0 25px rgba(255,0,0,.25);
+}
+
+/* =========================
+   LOGIN INPUT
+========================= */
+.terminal-input{
+  width:100%;
+  margin-top:12px;
+  background:#000;
+  border:none;
+  border-left:3px solid var(--green);
+  color:var(--green);
+  padding:10px;
+  outline:none;
+  font-size:1em;
+  appearance:none;
+  -webkit-appearance:none;
+}
+
+/* =========================
+   MAIN TERMINAL
+========================= */
+#mainTerminal{
+  display:none;
+  flex-direction:column;
+  height:100vh;
+  padding:10px;
+}
+
+#logo{
+  border-bottom:1px solid var(--green);
+  padding:10px;
+  font-size:0.95em;
+  text-shadow:0 0 5px rgba(0,255,65,.4);
+}
+
+#statusbar{
+  padding:6px 10px;
+  font-size:0.8em;
+  opacity:.7;
+}
+
+/* =========================
+   MAIN BUTTONS
+========================= */
+.main-buttons{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin:8px 0;
+}
+
+.main-buttons button:active,
+.quick-buttons button:active,
+.logout-zone button:active,
+.authButtons button:active,
+.data-btn:active{
+  background:var(--green);
+  color:#000;
+  box-shadow:0 0 10px rgba(0,255,65,.5);
+}
+
+/* =========================
+   POPUP BUTTONS
+========================= */
+.quick-buttons{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.quick-buttons button{
+  flex:1;
+}
+
+/* =========================
+   OUTPUT WINDOW
+========================= */
+#output{
+  flex:1;
+  margin-top:8px;
+  border:1px solid rgba(0,255,65,.4);
+  background:rgba(0,255,65,.03);
+  padding:12px;
+  overflow-y:auto;
+  font-size:0.85em;
+  line-height:1.5;
+  box-shadow:inset 0 0 12px rgba(0,255,65,.08);
+}
+
+#output::-webkit-scrollbar{
+  width:4px;
+}
+
+#output::-webkit-scrollbar-thumb{
+  background:var(--green);
+}
+
+/* =========================
+   DATA BUTTONS
+========================= */
+.data-btn{
+  width:100%;
+  margin-top:8px;
+  text-align:left;
+}
+
+/* =========================
+   LOGOUT
+========================= */
+.logout-zone{
+  margin-top:8px;
+}
+
+.logout-zone button{
+  width:100%;
+  border-color:var(--red);
+  color:var(--red);
+  background:#020202;
+}
+
+.logout-zone button:active{
+  background:var(--red);
+  color:#000;
+}
+
+/* =========================
+   SECRET AUTH
+========================= */
+#secretError,
+#authError{
+  color:var(--red);
+  margin-top:10px;
+  font-size:.9em;
+}
+
+.authButtons{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.authButtons button{
+  flex:1;
+}
+
+.danger-btn{
+  border-color:var(--red)!important;
+  color:var(--red)!important;
+  background:#020202!important;
+}
+
+.danger-btn:active{
+  background:var(--red)!important;
+  color:#000!important;
+}
+
+/* =========================
+   BLINK
+========================= */
+.blink{
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:0;}
+}
+
+/* =========================
+   STATUS COLORS
+========================= */
+.status-active{
+  color:#00ff41;
+  text-shadow:0 0 6px rgba(0,255,65,.5);
+}
+
+.status-contained{
+  color:#00e1ff;
+  text-shadow:0 0 6px rgba(0,225,255,.5);
+}
+
+.status-missing{
+  color:#ffe600;
+  text-shadow:0 0 6px rgba(255,230,0,.5);
+}
+
+.status-terminated{
+  color:#ff2a2a;
+  text-shadow:0 0 6px rgba(255,42,42,.5);
+}
+
+.status-neutralized{
+  color:#9a9a9a;
+  text-shadow:0 0 6px rgba(180,180,180,.3);
+}
+
+.status-sealed{
+  color:#b266ff;
+  text-shadow:0 0 6px rgba(178,102,255,.5);
+}
+
+.status-suspended{
+  color:#ff9900;
+  text-shadow:0 0 6px rgba(255,153,0,.5);
+}
+
+/* =========================
+   DANGER COLORS
+========================= */
+.danger-low{
+  color:#00ff41;
+  text-shadow:0 0 6px rgba(0,255,65,.5);
+}
+
+.danger-medium{
+  color:#ffe600;
+  text-shadow:0 0 6px rgba(255,230,0,.5);
+}
+
+.danger-high{
+  color:#ff2a2a;
+  text-shadow:0 0 6px rgba(255,42,42,.5);
+}
+
+.danger-extreme{
+  color:#ff00ae;
+  text-shadow:0 0 6px rgba(255,0,174,.5);
+}
+
+/* =========================
+   INFO PANEL
+========================= */
+.info-panel{
+  border:1px solid rgba(0,255,65,.5);
+  background:rgba(0,255,65,.03);
+  padding:12px;
+  margin-top:8px;
+  box-shadow:inset 0 0 10px rgba(0,255,65,.06);
+}
+
+.info-line{
+  padding:4px 0;
+  border-bottom:1px solid rgba(0,255,65,.08);
+}
+
+.info-title{
+  color:rgba(0,255,65,.65);
+  display:inline-block;
+  width:85px;
+}
+
+.secret-detected{
+  margin-top:10px;
+  color:#ff2a2a;
+  text-shadow:0 0 6px rgba(255,42,42,.5);
+  animation:blink 1s infinite;
+}
+
+/* 記憶処理時のフラッシュ演出用 */
+.amnestic-flash {
+  background-color: white !important;
+  color: white !important;
+  transition: all 0.3s ease;
+}
