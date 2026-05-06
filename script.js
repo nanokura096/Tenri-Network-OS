@@ -23,7 +23,7 @@ const database = {
       division: 'Research',
       rank: 'Analyst',
       ability: '情報分解',
-      status: 'MISSING',
+      status: 'DISMISSED',
       secret: true,
       secretRecord: '失踪前にSITE-256機密層への不正アクセス履歴あり。'
     },
@@ -35,9 +35,29 @@ const database = {
       division: 'Security',
       rank: 'Guard',
       ability: '身体強化',
-      status: 'ACTIVE',
+      status: 'KIA',
       secret: false
-    }
+    },
+
+    {
+  id: "AP-775544",
+  category: "personnel",
+  name: "雨宮 志乃",
+  sex: "FEMALE",
+  age: "19",
+  division: "IA",
+  rank: "ハズマットの秘書",
+  ability: `未来演算
+右目で短時間先の情報分岐を観測可能。
+観測回数が増えるほど疲労が蓄積する。`,
+  status: "MIA",
+  clearance: "4",
+  Description: `黒色端末を常時携帯。
+演算補助用の特殊レンズを使用。`,
+  record:`仮面演者結成前からハズマットの援助を行っていた。
+百鬼夜行事件以降、サイト-███にて勤務中。`,
+},
+
   ],
   objects: [
     {
