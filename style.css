@@ -369,3 +369,37 @@ button{
     from { opacity: 1; text-shadow: 0 0 5px #ff4444; }
     to { opacity: 0.3; text-shadow: none; }
 }
+
+/* 現役：安定したグリーン */
+.status-active {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+/* 殉職：警告の赤 + 点滅 */
+.status-kia {
+  color: #ff4444;
+  font-weight: bold;
+  animation: alert-flash 1s infinite alternate;
+}
+
+/* 行方不明：薄暗いグレー + 砂嵐のような不透明度変化 */
+.status-mia {
+  color: #888888;
+  text-shadow: none;
+  animation: ghost-flicker 3s infinite;
+}
+
+/* 演出用アニメーション */
+@keyframes alert-flash {
+  from { opacity: 1; text-shadow: 0 0 10px #ff0000; }
+  to { opacity: 0.4; text-shadow: none; }
+}
+
+@keyframes ghost-flicker {
+  0%, 100% { opacity: 0.8; }
+  5% { opacity: 0.2; }
+  7% { opacity: 0.9; }
+  9% { opacity: 0.3; }
+  10% { opacity: 0.8; }
+}

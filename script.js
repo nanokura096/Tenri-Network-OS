@@ -455,6 +455,20 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// ステータスに応じたクラス名を返す関数
+function getStatusClass(status) {
+  switch (status) {
+    case 'ACTIVE': return 'status-active';
+    case 'KIA':    return 'status-kia';
+    case 'MIA':    return 'status-mia';
+    default:       return '';
+  }
+}
+
+// 表示部分の書き換え例（innerHTMLに入れている場所）
+// <span class="${getStatusClass(agent.status)}">${agent.status}</span> 
+// のようにクラスを付与します。
+
 // キャラクター情報を表示する関数内での処理例
 function getStatusColor(status) {
   switch (status.toUpperCase()) {
