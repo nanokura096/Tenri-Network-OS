@@ -520,20 +520,19 @@ function renderAgentStatus(status) {
 
 function updateClock() {
     const clockEl = document.getElementById('system-clock');
-    if (!clockEl) return; // 要素がなければ何もしない（エラー防止）
+    if (!clockEl) return;
 
     const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const timeStr = now.getFullYear() + '/' + 
+        String(now.getMonth() + 1).padStart(2, '0') + '/' + 
+        String(now.getDate()).padStart(2, '0') + ' ' + 
+        String(now.getHours()).padStart(2, '0') + ':' + 
+        String(now.getMinutes()).padStart(2, '0') + ':' + 
+        String(now.getSeconds()).padStart(2, '0');
 
-    clockEl.innerText = `SYS_TIME: ${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
+    clockEl.innerText = `SYS_TIME: ${timeStr}`;
 }
 
 // 1秒ごとに実行
 setInterval(updateClock, 1000);
-// 念のため少し遅らせて初回実行（ログイン画面描画の安定化）
-setTimeout(updateClock, 100);
+updateClock();
