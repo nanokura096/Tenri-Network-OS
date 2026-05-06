@@ -8,6 +8,8 @@
 </head>
 <body>
 
+  <div id="system-clock" class="terminal-clock"></div>
+
   <div id="bootScreen" class="full-screen" style="z-index:10000; cursor:pointer;">
     <div class="blink" style="color:var(--green); font-size:1.2em;">[ CLICK TO BOOT SYSTEM ]</div>
   </div>
@@ -21,8 +23,7 @@
   <div id="mainTerminal" style="display:none; flex-direction:column; padding:20px;">
     <div id="logo">TENRI NETWORK OS // TOA-226</div>
     <div id="statusbar">SYSTEM ONLINE</div>
-    <div id="system-clock" class="terminal-clock"></div>
-
+    
     <div class="main-buttons">
       <button onclick="playSound('click'); helpCommand()">HELP</button>
       <button onclick="playSound('click'); showPersonnelButtons()">PERSONNEL</button>
