@@ -403,3 +403,8 @@ button{
   9% { opacity: 0.3; }
   10% { opacity: 0.8; }
 }
+
+#system-clock {
+    margin-left: auto; /* これで強制的に右に押し出します */
+    font-family: monospace;
+}

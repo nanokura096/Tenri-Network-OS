@@ -90,18 +90,20 @@ const database = {
 
 // エラーの影響を受けないよう、一番最初で時計を起動
 (function() {
-    function runClock() {
-        const el = document.getElementById('system-clock') || document.querySelector('#statusbar');
-        if (!el) return;
+    function updateClock() {
+    const clockEl = document.getElementById('system-clock');
+    if (!clockEl) return;
 
-        const now = new Date();
-        const timeStr = `${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
-        
-        // SYSTEM ONLINEごと上書きして強制表示
-        el.innerHTML = `<span style="flex-shrink:0;">SYSTEM ONLINE</span><span style="margin-left:auto; font-family:monospace;">SYS_TIME: ${timeStr}</span>`;
-        el.style.display = "flex";
-    }
-    setInterval(runClock, 1000);
+    const now = new Date();
+    // SYS_TIME: すら消して、純粋な時刻だけにしました
+    const timeStr = `${now.getFullYear()}/${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+
+    clockEl.innerText = timeStr;
+}
+
+// 1秒ごとに実行
+setInterval(updateClock, 1000);
+updateClock();
 })();
 
 const sfx = {
