@@ -518,21 +518,30 @@ function renderAgentStatus(status) {
     return `<span class="${className}" style="color: ${color}; border: 1px solid ${color}; padding: 2px 8px;">${status}</span>`;
 }
 
-function updateClock() {
-    const clockEl = document.getElementById('system-clock');
-    if (!clockEl) return;
+// 時計を動かすための最終兵器
+function startSystemClock() {
+    const statusbar = document.getElementById('statusbar');
+    if (!statusbar) {
+        // まだ画面（statusbar）がない場合は、0.5秒後に再挑戦
+        setTimeout(startSystemClock, 500);
+        return;
+    }
 
-    const now = new Date();
-    const timeStr = now.getFullYear() + '/' + 
-        String(now.getMonth() + 1).padStart(2, '0') + '/' + 
-        String(now.getDate()).padStart(2, '0') + ' ' + 
-        String(now.getHours()).padStart(2, '0') + ':' + 
-        String(now.getMinutes()).padStart(2, '0') + ':' + 
-        String(now.getSeconds()).padStart(2, '0');
-
-    clockEl.innerText = `SYS_TIME: ${timeStr}`;
+    setInterval(() => {
+        const now = new Date();
+        const timeStr = `${now.getFullYear()}/${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+        
+        // innerHTMLで構造ごと流し込む（SYSTEM ONLINEも復活させる）
+        statusbar.innerHTML = `
+            <span>SYSTEM ONLINE</span>
+            <span style="font-family: monospace; font-weight: bold; margin-left: auto;">SYS_TIME: ${timeStr}</span>
+        `;
+        // Flexboxを維持
+        statusbar.style.display = "flex";
+        statusbar.style.justifyContent = "space-between";
+        statusbar.style.width = "100%";
+    }, 1000);
 }
 
-// 1秒ごとに実行
-setInterval(updateClock, 1000);
-updateClock();
+// 関数の実行（これを書かないと動きません！）
+startSystemClock();
