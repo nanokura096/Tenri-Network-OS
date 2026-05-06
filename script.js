@@ -202,7 +202,7 @@ function helpCommand() {
         - PERSONNEL: 職員データの閲覧<br>
         - OBJECTS: 収容物の閲覧<br>
         - SECRET: 機密情報の復号<br>
-        - LOGOUT: セッションの終了<br><br>
+        - SHUTDOWN: セッションの終了<br><br>
         <button class="data-btn" onclick="initTerminal()">CLOSE</button>
     `);
 }
@@ -267,15 +267,15 @@ function viewSecretDetail(type, id) {
 }
 
 // --- ログアウト ---
-function openLogoutConfirm() {
-    document.getElementById('logoutConfirm').style.display = 'flex';
+function openSHUTDOWNConfirm() {
+    document.getElementById('SHUTDOWNConfirm').style.display = 'flex';
 }
 
-function closeLogoutConfirm() {
-    document.getElementById('logoutConfirm').style.display = 'none';
+function closeSHUTDOWNConfirm() {
+    document.getElementById('SHUTDOWNConfirm').style.display = 'none';
 }
 
-function confirmLogout() {
+function confirmSHUTDOWN() {
     location.reload();
 }
 

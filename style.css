@@ -117,10 +117,10 @@ button:active {
 }
 
 /* ログアウトエリア */
-.logout-zone {
+.SHUTDOWN-zone {
   margin-top: 10px;
 }
-.logout-zone button {
+.SHUTDOWN-zone button {
   width: 100%;
   border-color: var(--red);
   color: var(--red);

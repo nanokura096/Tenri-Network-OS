@@ -35,8 +35,8 @@
 
     <div id="output"></div>
 
-    <div class="logout-zone">
-      <button onclick="playSound('click'); openLogoutConfirm()">LOGOUT</button>
+    <div class="SHUTDOWN-zone">
+      <button onclick="playSound('click'); openSHUTDOWNConfirm()">SHUTDOWN</button>
     </div>
   </div>
 
@@ -53,13 +53,13 @@
     </div>
   </div>
 
-  <div id="logoutConfirm" class="full-screen" style="display:none;">
+  <div id="SHUTDOWNConfirm" class="full-screen" style="display:none;">
     <div class="terminal-box danger">
       <div class="blink" style="color:var(--red);margin-bottom:15px;">[ SYSTEM REBOOT CONFIRM ]</div>
       <div style="margin-bottom:10px;">Disconnect administrator session?</div>
       <div class="quick-buttons">
-        <button onclick="confirmLogout()">REBOOT</button>
-        <button onclick="closeLogoutConfirm()">ABORT</button>
+        <button onclick="confirmSHUTDOWN()">REBOOT</button>
+        <button onclick="closeSHUTDOWNConfirm()">ABORT</button>
       </div>
     </div>
   </div>
