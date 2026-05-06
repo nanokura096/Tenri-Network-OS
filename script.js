@@ -188,22 +188,32 @@ async function promptPassword() {
         if(typeof playSound === 'function') playSound('error');
 
         if (loginAttempts >= 3) {
-          // 3回ミス：記憶処理演出
-          await typeLog("<br><span style='color:var(--red); font-weight:bold;'>[ SECURITY BREACH ]</span>");
-          await typeLog("<span style='color:var(--red);'>INITIATING AMNESTICS...</span>", true);
-          
-          // 画面を真っ白にする演出
-          document.body.style.backgroundColor = "white";
-          await wait(1500);
-          
-          // ここで初めてリロード（すべてを忘却させる）
-          location.reload(); 
-        } else {
-          // 1〜2回目：リロードせずに再挑戦
-          await typeLog(`<br><span style='color:var(--red)'>ACCESS DENIED. (${loginAttempts}/3)</span>`);
-          await wait(600);
-          promptPassword(); // ★自分をもう一度呼んで入力欄を出す
-        }
+    await typeLog("<span style='color:var(--red)'>INITIATING AMNESTICS...</span>", true);
+
+    // 1. 画面全体を覆う白い「記憶処理レイヤー」を爆速で作成
+    const flash = document.createElement('div');
+    flash.style.position = 'fixed';
+    flash.style.top = '0';
+    flash.style.left = '0';
+    flash.style.width = '100vw';
+    flash.style.height = '100vh';
+    flash.style.backgroundColor = 'white';
+    flash.style.zIndex = '9999'; // 一番手前に持ってくる
+    flash.style.opacity = '0';
+    flash.style.transition = 'opacity 1.5s ease-in'; // 1.5秒かけて真っ白に
+    document.body.appendChild(flash);
+
+    // 2. 実行（真っ白にする）
+    setTimeout(() => {
+        flash.style.opacity = '1';
+    }, 100);
+
+    // 3. 2.5秒くらい待つ（「え、壊れた？」と思わせる絶妙な時間）
+    await wait(2500);
+
+    // 4. そしてリロード
+    location.reload();
+}
       }
     }
   });
