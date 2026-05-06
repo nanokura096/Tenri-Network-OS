@@ -403,3 +403,24 @@ button{
   9% { opacity: 0.3; }
   10% { opacity: 0.8; }
 }
+
+.terminal-clock {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--green);
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px var(--green);
+    letter-spacing: 2px;
+    z-index: 1000;
+}
+
+/* 画面が小さい時は少し調整 */
+@media (max-width: 600px) {
+    .terminal-clock {
+        font-size: 0.8rem;
+        top: 5px;
+        right: 10px;
+    }
+}
