@@ -309,32 +309,44 @@ function showObjectButtons() {
 }
 
 function searchDatabase(keyword) {
+  // 1. 人員（Personnel）の検索
   const p = database.personnel.find(x => x.id === keyword);
   if (p) {
     previousScreen = showPersonnelButtons;
+    const statusClass = `status-${p.status.toLowerCase()}`;
+    
     setOutput(withBackButton(`
       <div class="info-panel">
-        ID: ${p.id}<br>
-        NAME: ${p.name}<br>
-        DIVISION: ${p.division}<br>
-        RANK: ${p.rank}<br>
-        STATUS: ${p.status}
+        <div class="info-id">ID: ${p.id}</div>
+        <div class="info-item">NAME: ${p.name}</div>
+        <div class="info-item">SEX / AGE: ${p.sex} / ${p.age}</div>
+        <div class="info-item">DIVISION: ${p.division}</div>
+        <div class="info-item">RANK: ${p.rank}</div>
+        <div class="info-item" style="color:var(--green); border-top:1px dashed var(--green); margin-top:5px; padding-top:5px;">
+          ABILITY: ${p.ability}
+        </div>
+        <div class="info-item">STATUS: <span class="${statusClass}">${p.status}</span></div>
       </div>
       ${p.secret ? '<div class="secret-detected">[ SECRET RECORD AVAILABLE IN SECRET TAB ]</div>' : ''}
     `));
     return;
   }
 
+  // 2. オブジェクト（Objects）の検索
   const o = database.objects.find(x => x.id === keyword);
   if (o) {
     previousScreen = showObjectButtons;
+    const dangerClass = `danger-${o.danger.toLowerCase()}`;
+    
     setOutput(withBackButton(`
       <div class="info-panel">
-        ID: ${o.id}<br>
-        NAME: ${o.name}<br>
-        CLASS: ${o.class}<br>
-        DANGER: ${o.danger}<br>
-        DETAIL: ${o.detail}
+        <div class="info-id">ID: ${o.id}</div>
+        <div class="info-item">NAME: ${o.name}</div>
+        <div class="info-item">CLASS: ${o.class}</div>
+        <div class="info-item">DANGER: <span class="${dangerClass}">${o.danger}</span></div>
+        <div class="info-detail" style="border-top:1px dashed var(--green); margin-top:5px; padding-top:5px;">
+          DETAIL: ${o.detail}
+        </div>
       </div>
       ${o.secret ? '<div class="secret-detected">[ SECRET RECORD AVAILABLE IN SECRET TAB ]</div>' : ''}
     `));
