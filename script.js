@@ -201,12 +201,12 @@ async function promptPassword() {
           flash.style.backgroundColor = 'white';
           flash.style.zIndex = '9999';
           flash.style.opacity = '0';
-          flash.style.transition = 'opacity 1.5s ease-in';
+          flash.style.transition = 'opacity 0.5s ease-in';
           document.body.appendChild(flash);
 
           setTimeout(() => { flash.style.opacity = '1'; }, 100);
 
-          await wait(2500);
+          await wait(5000);
           location.reload();
         } else {
           // 3回未満：再入力
@@ -340,7 +340,7 @@ function closeSecretAuth() {
 
 function confirmSecretAccess() {
   const val = document.getElementById('secretPassInput').value.trim();
-  if (val === "LEVEL4") {
+  if (val === "NULL") {
     playSound('boot');
     document.getElementById('secretAuth').style.display = 'none';
     showSecretMenu();
