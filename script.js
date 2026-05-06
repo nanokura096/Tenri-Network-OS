@@ -222,7 +222,7 @@ function closeSecretAuth() {
 
 function confirmSecretAccess() {
     const pw = document.getElementById('secretPassInput').value;
-    if (pw === "0606") {
+    if (pw === "NULL") {
         isSecretAuthenticated = true;
         closeSecretAuth();
         showSecretMenu();
@@ -276,7 +276,16 @@ function closeSHUTDOWNConfirm() {
 }
 
 function confirmSHUTDOWN() {
-    location.reload();
+    // 画面を真っ暗にする演出
+    document.body.innerHTML = "";
+    document.body.style.backgroundColor = "#000";
+    
+    // ブラウザのタブを閉じようとする（ユーザー設定により無効な場合もあります）
+    setTimeout(() => {
+        window.close();
+        // 閉じられなかった時のためにリロード
+        location.reload();
+    }, 1000);
 }
 
 // 起動イベント登録
