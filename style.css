@@ -328,3 +328,44 @@ button{
   color: white !important;
   transition: all 0.3s ease;
 }
+
+/* SECRET情報の特別なスタイル */
+.secret-record-text {
+  color: #ff4444; /* 警告の赤 */
+  border-left: 2px solid #ff4444;
+  padding-left: 10px;
+  background: rgba(255, 0, 0, 0.1);
+  font-style: italic;
+  animation: secret-flicker 2s infinite;
+}
+
+@keyframes secret-flicker {
+  0% { opacity: 1; }
+  95% { opacity: 1; }
+  96% { opacity: 0.5; }
+  97% { opacity: 1; }
+  98% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+/* KIA (死亡) のテキストを不穏に光らせる */
+.status-kia {
+    color: #ff4444;
+    text-shadow: 0 0 5px #ff0000;
+    animation: pulse-red 2.0s infinite;
+}
+
+@keyframes pulse-red {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+.blink {
+    animation: status-blink 1.5s infinite alternate;
+}
+
+@keyframes status-blink {
+    from { opacity: 1; text-shadow: 0 0 5px #ff4444; }
+    to { opacity: 0.3; text-shadow: none; }
+}

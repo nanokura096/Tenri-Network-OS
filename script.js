@@ -201,7 +201,7 @@ async function promptPassword() {
           flash.style.backgroundColor = 'white';
           flash.style.zIndex = '9999';
           flash.style.opacity = '0';
-          flash.style.transition = 'opacity 0.5s ease-in';
+          flash.style.transition = 'opacity 0.2s ease-in';
           document.body.appendChild(flash);
 
           setTimeout(() => { flash.style.opacity = '1'; }, 100);
@@ -434,3 +434,40 @@ window.addEventListener('DOMContentLoaded', () => {
     }, { once: true });
   }
 });
+
+// キャラクター情報を表示する関数内での処理例
+function getStatusColor(status) {
+  switch (status.toUpperCase()) {
+    case 'ACTIVE': return '#00ff00'; // 生存・活動中
+    case 'KIA':    return '#ff4444'; // 死亡
+    case 'MIA':    return '#888888'; // 行方不明
+    case 'DISMISSED': return '#ffae00'; // 解任
+    default:       return '#ffffff'; // その他
+  }
+}
+
+// HTML生成時のイメージ
+const statusColor = getStatusColor(member.status);
+const statusHTML = `<span style="color: ${statusColor}; border: 1px solid ${statusColor}; padding: 2px 5px;">${member.status}</span>`;
+
+function renderAgentStatus(status) {
+    let color = "#ffffff";
+    let className = "status-tag";
+
+    switch (status) {
+        case 'ACTIVE':
+            color = "#00ff00"; // 鮮やかな緑
+            break;
+        case 'KIA':
+            color = "#ff4444"; // 警告の赤
+            className += " blink"; // 殉職は点滅させると不穏
+            break;
+        case 'MIA':
+            color = "#888888"; // 沈んだグレー
+            break;
+        default:
+            color = "#00ffff"; // その他はシアン
+    }
+
+    return `<span class="${className}" style="color: ${color}; border: 1px solid ${color}; padding: 2px 8px;">${status}</span>`;
+}
