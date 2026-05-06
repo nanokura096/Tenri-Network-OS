@@ -1,0 +1,426 @@
+/* =========================
+   DATABASE
+========================= */
+const database = {
+  personnel: [
+    {
+      id: 'AP-000000',
+      name: '鳴瀬 可楚',
+      sex: 'FEMALE',
+      age: '██',
+      division: '鳴響',
+      rank: 'Leader',
+      ability: '因報',
+      status: 'ACTIVE',
+      secret: true,
+      secretRecord: '因果律干渉により収容理論無効。単独行動時は監視班を配置。'
+    },
+    {
+      id: 'AP-838383',
+      name: '天城 ユウラ',
+      sex: 'FEMALE',
+      age: '17',
+      division: 'Research',
+      rank: 'Analyst',
+      ability: '情報分解',
+      status: 'MISSING',
+      secret: true,
+      secretRecord: '失踪前にSITE-256機密層への不正アクセス履歴あり。'
+    },
+    {
+      id: 'AP-424242',
+      name: '雨宮 レン',
+      sex: 'MALE',
+      age: '19',
+      division: 'Security',
+      rank: 'Guard',
+      ability: '身体強化',
+      status: 'ACTIVE',
+      secret: false
+    }
+  ],
+  objects: [
+    {
+      id: 'OBJ-220001',
+      name: '黒箱',
+      class: 'Keter',
+      danger: 'HIGH',
+      detail: '内部時間停止立方体。',
+      secret: true,
+      secretRecord: '内部に生体反応を検出。開封命令は永久凍結。'
+    },
+    {
+      id: 'OBJ-889100',
+      name: '模倣鏡',
+      class: 'Euclid',
+      danger: 'MEDIUM',
+      detail: '映した対象と異なる表情を返す鏡。精神汚染報告あり。',
+      secret: false
+    },
+    {
+      id: 'OBJ-443210',
+      name: '泣く人形',
+      class: 'Safe',
+      danger: 'LOW',
+      detail: '深夜2時に涙を流す磁器人形。',
+      secret: false
+    }
+  ]
+};
+
+const sfx = {
+  boot: new Audio("boot.mp3"),
+  click: new Audio("click.mp3"),
+  error: new Audio("error.mp3"),
+};
+
+function playSound(name) {
+  const audio = sfx[name];
+  if (!audio) return;
+  audio.currentTime = 0;
+  audio.play().catch(() => {});
+}
+
+let previousScreen = null;
+let loginAttempts = 0; // 失敗回数を記録する変数
+const wait = (ms) => new Promise(res => setTimeout(res, ms));
+
+/* =========================
+   BOOT & LOGIN FLOW
+========================= */
+async function bootSystem() {
+  // ★ここを追加：全音声を一度「空再生」してブラウザの制限を解く
+  Object.values(sfx).forEach(a => {
+    a.play().then(() => { a.pause(); a.currentTime = 0; }).catch(() => {});
+  });
+
+  document.getElementById('bootScreen').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'flex';
+  await startSequence();
+}
+
+async function typeLog(text, isDot = false) {
+  const consoleEl = document.getElementById('loginConsole');
+  if (!consoleEl) return;
+  const div = document.createElement('div');
+  consoleEl.appendChild(div);
+
+  // HTMLタグを1文字として扱わないための正規表現
+  const chars = text.match(/<[^>]+>|[^<]/g) || [];
+
+  // 通常のテキストタイピング
+  for (const char of chars) {
+    div.innerHTML += char;
+    consoleEl.scrollTop = consoleEl.scrollHeight;
+    
+    // タグ以外なら音を鳴らす
+    if (!char.startsWith('<')) playSound('click');
+    
+    await wait(15);
+  }
+
+  // ローディングの点々処理（必ず関数の内側に置く）
+  if (isDot) {
+    for (let i = 0; i < 3; i++) {
+      await wait(700);
+      div.innerHTML += '.';
+      playSound('click'); // 点が出る時もカチッと鳴らす
+    }
+  }
+} // ← ここで初めて関数を閉じる！
+
+
+async function startSequence() {
+  await typeLog("Welcome to Tenri Network OS");
+  await typeLog("Loading Kernel", true);
+  await typeLog("<br>Enter ID");
+  
+  const idInput = document.createElement('input');
+  idInput.className = "terminal-input";
+  document.getElementById('loginConsole').appendChild(idInput);
+  idInput.focus();
+
+  idInput.addEventListener('keydown', async (e) => {
+    if (e.key === 'Enter') {
+      const val = idInput.value.trim();
+      idInput.disabled = true;
+
+      if (val.length > 0) {
+        // 入力したIDを緑色で表示して「Verified（検証済み）」とする演出
+        await typeLog(`<br>ID: <span style="color:var(--green)">${val}</span> Verified.`);
+        // パスワード入力へ進む
+        promptPassword();
+      } else {
+        // 空欄だった場合だけやり直し
+        await typeLog("<br><span style='color:var(--red)'>ID REQUIRED.</span>");
+        await wait(600);
+        // 入力欄を出し直すために自分自身を呼ぶ
+        startSequence(); 
+      }
+    }
+  });
+}
+
+async function promptPassword() {
+  await typeLog("<br>Enter PASSWORD");
+  const passInput = document.createElement('input');
+  passInput.type = "password";
+  passInput.className = "terminal-input";
+  document.getElementById('loginConsole').appendChild(passInput);
+  passInput.focus();
+
+  passInput.addEventListener('keydown', async (e) => {
+    if (e.key === 'Enter') {
+      const val = passInput.value.trim();
+      passInput.disabled = true;
+
+      if (val === "226227") {
+        await typeLog("<br>Checking Credentials", true);
+        if(typeof playSound === 'function') playSound('boot'); 
+        await typeLog("<span style='color:var(--green);font-weight:bold;'>ACCESS GRANTED.</span>");
+        await wait(600);
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('mainTerminal').style.display = 'flex';
+        initTerminal();
+      } else {
+        // --- ここから失敗時の処理 ---
+        loginAttempts++; 
+        if(typeof playSound === 'function') playSound('error');
+
+        if (loginAttempts >= 3) {
+          // 3回ミス：記憶処理演出
+          await typeLog("<br><span style='color:var(--red); font-weight:bold;'>[ SECURITY BREACH ]</span>");
+          await typeLog("<span style='color:var(--red);'>INITIATING AMNESTICS...</span>", true);
+          
+          // 画面を真っ白にする演出
+          document.body.style.backgroundColor = "white";
+          await wait(1500);
+          
+          // ここで初めてリロード（すべてを忘却させる）
+          location.reload(); 
+        } else {
+          // 1〜2回目：リロードせずに再挑戦
+          await typeLog(`<br><span style='color:var(--red)'>ACCESS DENIED. (${loginAttempts}/3)</span>`);
+          await wait(600);
+          promptPassword(); // ★自分をもう一度呼んで入力欄を出す
+        }
+      }
+    }
+  });
+}
+
+/* =========================
+   MAIN TERMINAL CORE
+========================= */
+function setOutput(html) {
+  const output = document.getElementById('output');
+  if (!output) return;
+  output.innerHTML = `<div>${html}</div>`;
+  output.scrollTop = 0;
+  playSound('click');
+}
+
+function initTerminal() {
+  previousScreen = null;
+  setOutput(`
+    Tenri Network OS initialized.<br>
+    Administrator session connected.<br><br>
+    Select command from buttons above.
+  `);
+}
+
+function withBackButton(content) {
+  return `
+    ${content}
+    <br><br>
+    <button class="data-btn" onclick="goBack()">← BACK</button>
+  `;
+}
+
+function goBack() {
+  playSound('click');
+  if (previousScreen) {
+    previousScreen();
+  } else {
+    initTerminal();
+  }
+}
+
+/* =========================
+   COMMANDS
+========================= */
+function helpCommand() {
+  previousScreen = initTerminal;
+  setOutput(withBackButton(`
+    === SYSTEM HELP ===<br>
+    - PERSONNEL : View staff records<br>
+    - OBJECTS   : View contained objects<br>
+    - SECRET    : Access high-clearance data<br>
+    - LOGOUT    : Termination session
+  `));
+}
+
+function showPersonnelButtons() {
+  previousScreen = initTerminal;
+  let html = `=== PERSONNEL DATABASE ===<br>`;
+  database.personnel.forEach(p => {
+    html += `<button class="data-btn" onclick="searchDatabase('${p.id}')">${p.id} : ${p.name}</button><br>`;
+  });
+  setOutput(withBackButton(html));
+}
+
+function showObjectButtons() {
+  previousScreen = initTerminal;
+  let html = `=== OBJECT DATABASE ===<br>`;
+  database.objects.forEach(o => {
+    html += `<button class="data-btn" onclick="searchDatabase('${o.id}')">${o.id} : ${o.name}</button><br>`;
+  });
+  setOutput(withBackButton(html));
+}
+
+function searchDatabase(keyword) {
+  const p = database.personnel.find(x => x.id === keyword);
+  if (p) {
+    previousScreen = showPersonnelButtons;
+    setOutput(withBackButton(`
+      <div class="info-panel">
+        ID: ${p.id}<br>
+        NAME: ${p.name}<br>
+        DIVISION: ${p.division}<br>
+        RANK: ${p.rank}<br>
+        STATUS: ${p.status}
+      </div>
+      ${p.secret ? '<div class="secret-detected">[ SECRET RECORD AVAILABLE IN SECRET TAB ]</div>' : ''}
+    `));
+    return;
+  }
+
+  const o = database.objects.find(x => x.id === keyword);
+  if (o) {
+    previousScreen = showObjectButtons;
+    setOutput(withBackButton(`
+      <div class="info-panel">
+        ID: ${o.id}<br>
+        NAME: ${o.name}<br>
+        CLASS: ${o.class}<br>
+        DANGER: ${o.danger}<br>
+        DETAIL: ${o.detail}
+      </div>
+      ${o.secret ? '<div class="secret-detected">[ SECRET RECORD AVAILABLE IN SECRET TAB ]</div>' : ''}
+    `));
+    return;
+  }
+}
+
+/* =========================
+   SECRET SYSTEM
+========================= */
+function openSecretAuth() {
+  playSound('click');
+  document.getElementById('secretAuth').style.display = 'flex';
+  document.getElementById('secretPassInput').value = '';
+  document.getElementById('secretError').innerHTML = '';
+  setTimeout(() => document.getElementById('secretPassInput').focus(), 50);
+}
+
+function closeSecretAuth() {
+  playSound('click');
+  document.getElementById('secretAuth').style.display = 'none';
+}
+
+function confirmSecretAccess() {
+  const val = document.getElementById('secretPassInput').value.trim();
+  if (val === "LEVEL4") {
+    playSound('boot');
+    document.getElementById('secretAuth').style.display = 'none';
+    showSecretMenu();
+  } else {
+    playSound('error');
+    document.getElementById('secretError').innerHTML = 'ACCESS DENIED.';
+  }
+}
+
+function showSecretMenu() {
+  previousScreen = initTerminal;
+  setOutput(withBackButton(`
+    === CLASSIFIED RECORDS ===<br>
+    <button class="data-btn" onclick="showSecretPersonnel()">SECRET PERSONNEL</button><br>
+    <button class="data-btn" onclick="showSecretObjects()">SECRET OBJECTS</button>
+  `));
+}
+
+function showSecretPersonnel() {
+  previousScreen = showSecretMenu;
+  let html = `=== TOP SECRET PERSONNEL ===<br>`;
+  database.personnel.filter(p => p.secret).forEach(p => {
+    html += `<button class="data-btn" onclick="openSecretFile('P','${p.id}')">${p.name}</button><br>`;
+  });
+  setOutput(withBackButton(html));
+}
+
+function showSecretObjects() {
+  previousScreen = showSecretMenu;
+  let html = `=== TOP SECRET OBJECTS ===<br>`;
+  database.objects.filter(o => o.secret).forEach(o => {
+    html += `<button class="data-btn" onclick="openSecretFile('O','${o.id}')">${o.name}</button><br>`;
+  });
+  setOutput(withBackButton(html));
+}
+
+function openSecretFile(type, id) {
+  playSound('click');
+  const target = type === 'P' ? database.personnel.find(x => x.id === id) : database.objects.find(x => x.id === id);
+  previousScreen = type === 'P' ? showSecretPersonnel : showSecretObjects;
+  setOutput(withBackButton(`
+    <div style="color:var(--red)">[ CLASSIFIED RECORD ]</div><br>
+    TARGET: ${target.name}<br><br>
+    ${target.secretRecord}
+  `));
+}
+
+/* =========================
+   LOGOUT
+========================= */
+function openLogoutConfirm() {
+  playSound('click');
+  document.getElementById('logoutConfirm').style.display = 'flex';
+}
+
+function closeLogoutConfirm() {
+  playSound('click');
+  document.getElementById('logoutConfirm').style.display = 'none';
+}
+
+async function confirmLogout() {
+  playSound('click');
+  const box = document.querySelector('#logoutConfirm .terminal-box');
+  box.innerHTML = `<div id="rebootLog"></div>`;
+  const rebootLog = document.getElementById('rebootLog');
+
+  async function rbType(text) {
+    const d = document.createElement('div');
+    d.innerHTML = text;
+    rebootLog.appendChild(d);
+    playSound('click');
+    await wait(500);
+  }
+
+  await rbType("Closing session...");
+  await rbType("Clearing cache...");
+  await rbType("Rebooting...");
+  await wait(500);
+  location.reload();
+}
+
+/* =========================
+   INITIALIZE
+========================= */
+window.addEventListener('DOMContentLoaded', () => {
+  const bootBtn = document.getElementById('bootScreen');
+  if (bootBtn) {
+    // ↓ ここに async を追加！
+    bootBtn.addEventListener('click', async () => { 
+      await bootSystem(); 
+    }, { once: true });
+  }
+});
