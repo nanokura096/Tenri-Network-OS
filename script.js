@@ -434,3 +434,8 @@ window.addEventListener('DOMContentLoaded', () => {
     }, { once: true });
   }
 });
+
+// プログラムに「待機」を教えるための関数
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
