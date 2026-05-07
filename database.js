@@ -146,12 +146,12 @@ const database = {
 
      {
   id: 'AP-786743',
-  name: ‘鳴雨 葉月',
+  name: `鳴雨 葉月',
   sex: 'FEMALE',
   age: ‘██',
   division: ‘音響班',
-  rank: ‘Combat Person',
-  ability: `福音(エピメテウス)
+  rank: ‘Combat Person`,
+ability: `福音(エピメテウス)
 彼女はPP(Plant Point)を消費して生物を生成できる。
 最大で1000で、いつもその量だけPPが溜まっている。
 生成する生物は生物であればなんでも可能で、生命はその生物が死ぬまで宿り続ける。
