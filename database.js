@@ -5,16 +5,16 @@
 const database = {
   personnel: [
     {
-  id: 'AP-000000',
-  name: '鳴瀬 可楚',
-  sex: 'FEMALE',
-  age: '██',
-  division: '鳴響',
-  rank: 'Leader',
-  ability: '因報',
-  status: 'ACTIVE',
+  id: `AP-000000`,
+  name: `鳴瀬 可楚`,
+  sex: `FEMALE`,
+  age: `██`,
+  division: `鳴響`,
+  rank: `Leader`,
+  ability: `因報`,
+  status: `ACTIVE`,
   secret: true,
-  profile: '対象は鳴響隊長である。強大な力を利用して戦闘を行うが彼女自身には限界がないため危険な状態に陥っても活動を続ける可能性がある。',
+  profile: `対象は鳴響隊長である。強大な力を利用して戦闘を行うが彼女自身には限界がないため危険な状態に陥っても活動を続ける可能性がある。`,
   secretRecord: `
 【基本クリアランス: LEVEL-3 / 特別閲覧権限: LEVEL-4】
 
@@ -24,16 +24,16 @@ const database = {
 },
 
 {
-  id: 'AP-111444',
-  name: '鳴雨 初芽',
-  sex: 'FEMALE',
-  age: '??',
-  division: '鳴響部隊',
-  rank: 'Sub-Leader',
-  ability: '原罪',
-  status: 'ACTIVE',
+  id: `AP-111444`,
+  name: `鳴雨 初芽`,
+  sex: `FEMALE`,
+  age: `??`,
+  division: `鳴響部隊`,
+  rank: `Sub-Leader`,
+  ability: `原罪`,
+  status: `ACTIVE`,
   secret: true,
-  profile: '対象は鳴響に所属する職員。爆発を操作する能力を有する。切った軌道に沿って爆発を起こす特殊な刀「破調刀」を運用する。',
+  profile: `対象は鳴響に所属する職員。爆発を操作する能力を有する。切った軌道に沿って爆発を起こす特殊な刀「破調刀」を運用する。`,
   secretRecord: `
 【クリアランスレベル: 3 (必要権限: LEVEL-4)】
 
@@ -51,16 +51,16 @@ const database = {
 },
 
 {
-  id: 'AP-226227',
-  name: '鳴河 蒼空',
-  sex: 'FEMALE',
-  age: '██',
-  division: '鳴響部隊',
-  rank: 'Hacking Person',
-  ability: '天網',
-  status: 'ACTIVE',
+  id: `AP-226227`,
+  name: `鳴河 蒼空`,
+  sex: `FEMALE`,
+  age: `██`,
+  division: `鳴響部隊`,
+  rank: `Hacking Person`,
+  ability: `天網`,
+  status: `ACTIVE`,
   secret: true,
-  profile: '対象は鳴響所属。デバイスを介した遠隔情報収集およびハッキングを専門とする。また、破壊不可能な自律兵装「蒼龍」を操作・使役する。',
+  profile: `対象は鳴響所属。デバイスを介した遠隔情報収集およびハッキングを専門とする。また、破壊不可能な自律兵装「蒼龍」を操作・使役する。`,
   secretRecord: `
 【クリアランスレベル: 5 (必要権限: LEVEL-5)】
 
@@ -78,16 +78,16 @@ const database = {
 },
 
 {
-  id: 'AP-114555',
-  name: '鳴乃 朔',
-  sex: 'MALE',
-  age: '██',
-  division: '鳴響部隊',
-  rank: 'Combat Person',
-  ability: '時喰',
-  status: 'ACTIVE',
+  id: `AP-114555`,
+  name: `鳴乃 朔`,
+  sex: `MALE`,
+  age: `██`,
+  division: `鳴響部隊`,
+  rank: `Combat Person`,
+  ability: `時喰`,
+  status: `ACTIVE`,
   secret: true,
-  profile: '対象は音響班所属。所持する特殊な懐中時計を媒介に、自身と味方を除く周囲の時間を1秒間停止させる能力を有する。',
+  profile: `対象は音響班所属。所持する特殊な懐中時計を媒介に、自身と味方を除く周囲の時間を1秒間停止させる能力を有する。`,
   secretRecord: `
 【クリアランスレベル: 3 (必要権限: LEVEL-4)】
 
@@ -104,16 +104,16 @@ const database = {
   `
 },
 {
-  id: 'AP-111666',
-  name: '鳴見 彩華',
-  sex: 'FEMALE',
-  age: '20',
-  division: '音響班',
-  rank: 'Magic Person',
-  ability: '鳴式呪術',
-  status: 'ACTIVE',
+  id: `AP-111666`,
+  name: `鳴見 彩華`,
+  sex: `FEMALE`,
+  age: `20`,
+  division: `音響班`,
+  rank: `Magic Person`,
+  ability: `鳴式呪術`,
+  status: `ACTIVE`,
   secret: true,
-  profile: '対象は鳴響所属。魔力と呪力を100%の効率で相互変換可能な特殊体質を持ち、自己流の魔術と呪術を使い分ける。',
+  profile: `対象は鳴響所属。魔力と呪力を100%の効率で相互変換可能な特殊体質を持ち、自己流の魔術と呪術を使い分ける。`,
   secretRecord: `
 【クリアランスレベル: 3 (特別閲覧権限: LEVEL-5)】
 
@@ -145,12 +145,12 @@ const database = {
 },
 
      {
-  id: 'AP-786743',
-  name: `鳴雨 葉月',
-  sex: 'FEMALE',
-  age: ‘██',
-  division: ‘音響班',
-  rank: ‘Combat Person`,
+  id: `AP-786743`,
+  name: `鳴雨 葉月`,
+  sex: `FEMALE`,
+  age: `██`,
+  division: `音響班`,
+  rank: `Combat Person`,
 ability: `福音(エピメテウス)
 彼女はPP(Plant Point)を消費して生物を生成できる。
 最大で1000で、いつもその量だけPPが溜まっている。
@@ -161,7 +161,7 @@ ability: `福音(エピメテウス)
 そして、生物の傷を修復するは可能だが、彼女いわく
 「難しいんじゃ」
 だそう。`,
-  status: 'ACTIVE',
+  status: `ACTIVE`,
   secret: true,
   profile: `「ハイカード」という名を捨てた人間。
 今は何にも縛られずにのらりくらりと生きている。`,
@@ -176,16 +176,16 @@ ability: `福音(エピメテウス)
 
 
 {
-  id: 'AP-010107',
-  name: '零華',
-  sex: 'FEMALE',
-  age: '20',
-  division: '零',
-  rank: 'Support Person',
-  ability: '零水',
-  status: 'MIA',
+  id: `AP-010107`,
+  name: `零華`,
+  sex: `FEMALE`,
+  age: `20`,
+  division: `零`,
+  rank: `Support Person`,
+  ability: `零水`,
+  status: `MIA`,
   secret: true,
-  profile: '対象は「零」に所属。水、液体窒素、塩酸のいずれかを最大1L生成・操作する能力を有する。現在、行方不明（MIA）。',
+  profile: `対象は「零」に所属。水、液体窒素、塩酸のいずれかを最大1L生成・操作する能力を有する。現在、行方不明（MIA）。`,
   secretRecord: `
 【クリアランスレベル: 3 (必要権限: LEVEL-3)】
 
@@ -195,16 +195,16 @@ ability: `福音(エピメテウス)
 ■ 補足 (NOTE): [アクセス拒否] `
 },
 {
-  id: 'AP-123107',
-  name: '零斗',
-  sex: 'MALE',
-  age: '24',
-  division: '零',
-  rank: 'Combat Person',
-  ability: '零点投射',
-  status: 'MIA',
+  id: `AP-123107`,
+  name: `零斗`,
+  sex: `MALE`,
+  age: `24`,
+  division: `零`,
+  rank: `Combat Person`,
+  ability: `零点投射`,
+  status: `MIA`,
   secret: true,
-  profile: '対象は「零」に所属。自身の行動を最大六層まで重複させる能力を持つ。高い身体能力を保持し、現在行方不明（MIA）。',
+  profile: `対象は「零」に所属。自身の行動を最大六層まで重複させる能力を持つ。高い身体能力を保持し、現在行方不明（MIA）。`,
   secretRecord: `
 【クリアランスレベル: 3 (必要権限: LEVEL-3)】
 
@@ -217,16 +217,16 @@ ability: `福音(エピメテウス)
 },
 
 {
-  id: 'AP-666000',
-  name: 'CBRNE',
-  sex: 'FEMALE',
-  age: '██',
-  division: '音響班',
-  rank: 'Combat Person',
-  ability: 'CBRNE操作',
-  status: 'ACTIVE',
+  id: `AP-666000`,
+  name: `CBRNE`,
+  sex: `FEMALE`,
+  age: `██`,
+  division: `音響班`,
+  rank: `Combat Person`,
+  ability: `CBRNE操作`,
+  status: `ACTIVE`,
   secret: true,
-  profile: '音響班所属。CBRNE（化学・生物・放射性・核・爆発物）の5要素を操る能力を持つ。非常に陽気な性格。',
+  profile: `音響班所属。CBRNE（化学・生物・放射性・核・爆発物）の5要素を操る能力を持つ。非常に陽気な性格。`,
   secretRecord: `
 【クリアランスレベル: 3 (特別閲覧権限: LEVEL-5)】
 
@@ -254,16 +254,16 @@ ability: `福音(エピメテウス)
 },
 
 {
-  id: 'AP-000666',
-  name: 'ハズマット',
-  sex: 'FEMALE',
-  age: '██',
-  division: '仮面演者',
-  rank: 'Combat Person / Leader',
-  ability: 'ガス放出・気流操作',
-  status: 'MIA',
+  id: `AP-000666`,
+  name: `ハズマット`,
+  sex: `FEMALE`,
+  age: `██`,
+  division: `仮面演者`,
+  rank: `Combat Person / Leader`,
+  ability: `ガス放出・気流操作`,
+  status: `MIA`,
   secret: true,
-  profile: '仮面演者のリーダー。強力なガス放出能力に加え、気流操作による広範囲制御を行う。物理格闘能力も非常に高い。百鬼夜行事件にて仲間を逃がすための殿（しんがり）を務めて以降、行方不明。',
+  profile: `仮面演者のリーダー。強力なガス放出能力に加え、気流操作による広範囲制御を行う。物理格闘能力も非常に高い。百鬼夜行事件にて仲間を逃がすための殿（しんがり）を務めて以降、行方不明。`,
   secretRecord: `
 【クリアランスレベル: 3 (特別閲覧権限: LEVEL-5)】
 ■ 能力詳細: 自身の換気口や周囲の亀裂から多様なガス（水素、塩素、記憶処理剤、回復剤等）を放出。
@@ -274,16 +274,16 @@ ability: `福音(エピメテウス)
   `
 },
 {
-  id: 'AP-606060',
-  name: 'レミア',
-  sex: 'FEMALE',
-  age: '██',
-  division: '仮面演者',
-  rank: 'Combat Person',
-  ability: 'EOD (Electrical Over Drive)',
-  status: 'MIA',
+  id: `AP-606060`,
+  name: `レミア`,
+  sex: `FEMALE`,
+  age: `██`,
+  division: `仮面演者`,
+  rank: `Combat Person`,
+  ability: `EOD (Electrical Over Drive)`,
+  status: `MIA`,
   secret: true,
-  profile: '電子戦特化型。デバイスを強制的にオーバーロードさせ破壊する。独自の刀術と機械音声を使いこなす。百鬼夜行事件以降、行方不明。',
+  profile: `電子戦特化型。デバイスを強制的にオーバーロードさせ破壊する。独自の刀術と機械音声を使いこなす。百鬼夜行事件以降、行方不明。`,
   secretRecord: `
 【クリアランスレベル: 5 (必要権限: LEVEL-5)】
 ■ 能力詳細: 視界内の電子機器の中央処理装置を直接暴走・焼却させる。
@@ -293,16 +293,16 @@ ability: `福音(エピメテウス)
   `
 },
 {
-  id: 'AP-006600',
-  name: 'ブラッド',
-  sex: 'FEMALE',
-  age: '██',
-  division: '仮面演者',
-  rank: 'Combat Person',
-  ability: 'グリッチ',
-  status: 'MIA',
+  id: `AP-006600`,
+  name: `ブラッド`,
+  sex: `FEMALE`,
+  age: `██`,
+  division: `仮面演者`,
+  rank: `Combat Person`,
+  ability: `グリッチ`,
+  status: `MIA`,
   secret: true,
-  profile: '空間の「バグ」を操る能力者。グリッチを介した空間転移や大剣の生成を行う。百鬼夜行事件以降、行方不明。',
+  profile: `空間の「バグ」を操る能力者。グリッチを介した空間転移や大剣の生成を行う。百鬼夜行事件以降、行方不明。`,
   secretRecord: `
 【クリアランスレベル: 3 (必要権限: LEVEL-4)】
 ■ 能力詳細: 空間に意図的にグリッチを発生させ、物理法則を無視した移動や攻撃を行う。
@@ -311,16 +311,16 @@ ability: `福音(エピメテウス)
   `
 },
 {
-  id: 'AP-060606',
-  name: '菜乃華',
-  sex: 'FEMALE',
-  age: '██',
-  division: '仮面演者',
-  rank: 'Combat Person',
-  ability: 'Copy',
-  status: 'MIA',
+  id: `AP-060606`,
+  name: `菜乃華`,
+  sex: `FEMALE`,
+  age: `██`,
+  division: `仮面演者`,
+  rank: `Combat Person`,
+  ability: `Copy`,
+  status: `MIA`,
   secret: true,
-  profile: '視覚情報を元にあらゆる能力を模倣する。アニメ等の架空の能力も再現可能。変装の名手でもある。百鬼夜行事件以降、行方不明。',
+  profile: `視覚情報を元にあらゆる能力を模倣する。アニメ等の架空の能力も再現可能。変装の名手でもある。百鬼夜行事件以降、行方不明。`,
   secretRecord: `
 【クリアランスレベル: 3 (必要権限: LEVEL-3)】
 ■ ストック能力例: 空の面化、呪力放出、御厨子（見えない斬撃）、十劃呪法、防御魔法等。
@@ -348,16 +348,16 @@ ability: `福音(エピメテウス)
 },
 
 {
-  id: '[未分類]-000111', // [未分類]から形式を統一
-  name: '零乃 柚',
-  sex: 'FEMALE',
-  age: '██',
-  division: '未所属',
-  rank: 'a Person / Reconnaissance',
-  ability: '無能力（特異体質：不可視）',
-  status: 'ACTIVE',
+  id: `[未分類]-000111`, // [未分類]から形式を統一
+  name: `零乃 柚`,
+  sex: `FEMALE`,
+  age: `██`,
+  division: `未所属`,
+  rank: `a Person / Reconnaissance`,
+  ability: `無能力（特異体質：不可視）`,
+  status: `ACTIVE`,
   secret: true,
-  profile: '特定の部隊に所属していないが、その特異な体質から偵察任務に従事することが多い。高い身体能力と隠密技術を併せ持つ。',
+  profile: `特定の部隊に所属していないが、その特異な体質から偵察任務に従事することが多い。高い身体能力と隠密技術を併せ持つ。`,
   secretRecord: `
 【クリアランスレベル: 3 (必要権限: LEVEL-3)】
 
@@ -378,16 +378,16 @@ ability: `福音(エピメテウス)
 },
 
 {
-  id: 'AP-000115',
-  name: '天音 凛',
-  sex: 'FEMALE',
-  age: '20',
-  division: '音響班', // 所属を変更
-  rank: '新人',
-  ability: '物神',
-  status: 'ACTIVE',
+  id: `AP-000115`,
+  name: `天音 凛`,
+  sex: `FEMALE`,
+  age: `20`,
+  division: `音響班`, // 所属を変更
+  rank: `新人`,
+  ability: `物神`,
+  status: `ACTIVE`,
   secret: true,
-  profile: '音響班所属の新人。物理諸現象（風、電気、音、物理エネルギー、光）を操作する能力を持ち、風龍「凛龍」を使役する。',
+  profile: `音響班所属の新人。物理諸現象（風、電気、音、物理エネルギー、光）を操作する能力を持ち、風龍「凛龍」を使役する。`,
   secretRecord: `
 【クリアランスレベル: 3 (特別閲覧権限: LEVEL-5)】
 
@@ -408,16 +408,16 @@ OBJ-000115を参照。
   `
 },
     {
-  id: 'AP-838383',
-  name: '天城 ユウラ',
-  sex: 'FEMALE',
-  age: '17',
-  division: 'Research (Ex-Member)',
-  rank: 'Analyst / Renegade',
-  ability: '情報分解',
-  status: 'ACTIVE',
+  id: `AP-838383`,
+  name: `天城 ユウラ`,
+  sex: `FEMALE`,
+  age: `17`,
+  division: `Research (Ex-Member)`,
+  rank: `Analyst / Renegade`,
+  ability: `情報分解`,
+  status: `ACTIVE`,
   secret: true,
-  profile: '元Research所属。現在は離反し、外部組織への関与が疑われている。弱冠17歳ながら極めて高い分析能力を持つ。',
+  profile: `元Research所属。現在は離反し、外部組織への関与が疑われている。弱冠17歳ながら極めて高い分析能力を持つ。`,
   secretRecord: `
 【警告：SITE-256 最優先指名手配】
 
@@ -428,16 +428,16 @@ OBJ-000115を参照。
   `
 },
 {
-  id: 'AP-109311',
-  name: '九条 院',
-  sex: 'MALE',
-  age: '24',
-  division: '鳴響 (Ex-Member)',
-  rank: 'Specialist / Adversary',
-  ability: '強制共鳴',
-  status: 'ACTIVE',
+  id: `AP-109311`,
+  name: `九条 院`,
+  sex: `MALE`,
+  age: `24`,
+  division: `鳴響 (Ex-Member)`,
+  rank: `Specialist / Adversary`,
+  ability: `強制共鳴`,
+  status: `ACTIVE`,
   secret: true,
-  profile: '元鳴響部隊スペシャリスト。自身の心拍と対象の心拍を強制的に同期させる凶悪な術式を操る。',
+  profile: `元鳴響部隊スペシャリスト。自身の心拍と対象の心拍を強制的に同期させる凶悪な術式を操る。`,
   secretRecord: `
 【クリアランスレベル: 4 (重要警戒対象)】
 
@@ -449,27 +449,27 @@ OBJ-000115を参照。
   `
 },
 {
-  id: 'AP-424242',
-  name: '雨宮 レン',
-  sex: 'MALE',
-  age: '19',
-  division: 'Security (Ex-Member)',
-  rank: 'Guard / Missing',
-  ability: '身体強化',
-  status: 'MISSING', // 現状不明
+  id: `AP-424242`,
+  name: `雨宮 レン`,
+  sex: `MALE`,
+  age: `19`,
+  division: `Security (Ex-Member)`,
+  rank: `Guard / Missing`,
+  ability: `身体強化`,
+  status: `MISSING`, // 現状不明
   secret: false,
-  profile: '元Security所属のガード。19歳。身体能力を極限まで引き上げる能力を持つが、現在は行方不明となっており、敵側へ合流した可能性が極めて高い。'
+  profile: `元Security所属のガード。19歳。身体能力を極限まで引き上げる能力を持つが、現在は行方不明となっており、敵側へ合流した可能性が極めて高い。`
 }
 
   ],
   objects: [
 
 {
-  id: 'OBJ-000115',
-  name: '神具「天逆楔（あまのさかづき）」',
-  class: 'Thaumiel / Special Case',
-  danger: 'CRITICAL (不適合者に対して)',
-  detail: '「あらゆる事象の無効化」を司る鉾。適合者のみがその真価を引き出すことが可能。',
+  id: `OBJ-000115`,
+  name: `神具「天逆楔（あまのさかづき）」`,
+  class: `Thaumiel / Special Case`,
+  danger: `CRITICAL (不適合者に対して)`,
+  detail: `「あらゆる事象の無効化」を司る鉾。適合者のみがその真価を引き出すことが可能。`,
   secret: true,
   secretRecord: `
 【特別管理プロトコル：適合者限定運用】
@@ -497,11 +497,11 @@ OBJ-000115を参照。
 },
 
         {
-  id: 'OBJ-110978', // 識別番号
-  name: '天理楔 (てんりのくさび)',
-  class: 'Keter / 零具',
-  danger: 'CRITICAL',
-  detail: '全長██cm、天逆鉾に酷似した形状を持つ鉾。現在、鳴響チーム隊長「鳴瀬 可楚」が保持・運用。',
+  id: `OBJ-110978`, // 識別番号
+  name: `天理楔 (てんりのくさび)`,
+  class: `Keter / 零具`,
+  danger: `CRITICAL`,
+  detail: `全長██cm、天逆鉾に酷似した形状を持つ鉾。現在、鳴響チーム隊長「鳴瀬 可楚」が保持・運用。`,
   secret: true, // 機密情報あり
   secretRecord: `
 【特別収容プロトコル】
@@ -522,11 +522,11 @@ OBJ-000115を参照。
 },
 
 {
-  id: 'OBJ-220001',
-  name: '黒箱 (ブラックボックス)',
-  class: 'Keter',
-  danger: 'HIGH',
-  detail: '内部の時間が完全に停止している一辺30cmの立方体。物理的な干渉はすべて表面で無効化される。',
+  id: `OBJ-220001`,
+  name: `黒箱 (ブラックボックス)`,
+  class: `Keter`,
+  danger: `HIGH`,
+  detail: `内部の時間が完全に停止している一辺30cmの立方体。物理的な干渉はすべて表面で無効化される。`,
   secret: true,
   secretRecord: `
 【特別収容プロトコル】
@@ -538,31 +538,31 @@ OBJ-000115を参照。
   `
 },
 {
-  id: 'OBJ-889100',
-  name: '模倣鏡',
-  class: 'Euclid',
-  danger: 'MEDIUM',
-  detail: '映した対象と異なる表情を返す、あるいは鏡像が独立した行動をとるアンティーク鏡。',
+  id: `OBJ-889100`,
+  name: `模倣鏡`,
+  class: `Euclid`,
+  danger: `MEDIUM`,
+  detail: `映した対象と異なる表情を返す、あるいは鏡像が独立した行動をとるアンティーク鏡。`,
   secret: false,
-  profile: '鏡を直視した職員に「鏡の中の自分に置換される」という強迫観念および、重度の精神汚染（認知不全）を引き起こした報告がある。実験時以外は不透過の布で遮蔽すること。'
+  profile: `鏡を直視した職員に「鏡の中の自分に置換される」という強迫観念および、重度の精神汚染（認知不全）を引き起こした報告がある。実験時以外は不透過の布で遮蔽すること。`
 },
 {
-  id: 'OBJ-443210',
-  name: '泣く人形',
-  class: 'Safe',
-  danger: 'LOW',
-  detail: '深夜2時になると、未知の組成を持つ液体（涙）を流す少女の磁器人形。',
+  id: `OBJ-443210`,
+  name: `泣く人形`,
+  class: `Safe`,
+  danger: `LOW`,
+  detail: `深夜2時になると、未知の組成を持つ液体（涙）を流す少女の磁器人形。`,
   secret: false,
-  profile: '涙の成分は人間のものと酷似しているが、DNA配列は特定不能。深夜帯以外は無害であり、収容環境の維持も容易である。'
+  profile: `涙の成分は人間のものと酷似しているが、DNA配列は特定不能。深夜帯以外は無害であり、収容環境の維持も容易である。`
 },
 {
-  id: 'OBJ-000000',
-  name: '虚無の牢獄「天理終焉箱」',
-  class: 'Keter',
-  danger: 'EXTREME',
-  detail: '外面に無数の「目」のような紋様が刻まれた立方体。内部は無限の拘束空間。現在、オブジェクト自体が行方不明。',
+  id: `OBJ-000000`,
+  name: `虚無の牢獄「天理終焉箱」`,
+  class: `Keter`,
+  danger: `EXTREME`,
+  detail: `外面に無数の「目」のような紋様が刻まれた立方体。内部は無限の拘束空間。現在、オブジェクト自体が行方不明。`,
   secret: true,
-  status: 'MIA',
+  status: `MIA`,
   secretRecord: `
 【重要機密：最優先捜索対象 / 解放条件の解析】
 
